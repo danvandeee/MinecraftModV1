@@ -1,0 +1,11 @@
+package com.danvandeee.DannyEersteMod.util;
+
+public class Reference {
+
+	public static final String MOD_ID = "dm";
+	public static final String NAME = "Danny eerste Mod";
+	public static final String VERSION = "0.1";
+	public static final String ACCEPTED_VERSIONS = "[1.12.2]";
+	public static final String CLIENT_PROXY_CLASS = "com.danvandeee.DannyEersteMod.proxy.ClientProxy";
+	public static final String COMMON_PROXY_CLASS = "com.danvandeee.DannyEersteMod.proxy.CommonProxy";
+}

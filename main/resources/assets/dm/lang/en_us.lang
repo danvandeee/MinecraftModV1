@@ -1,0 +1,17 @@
+
+//items
+item.ruby.name=Ruby
+item.danstick.name=Danstick
+
+
+
+//blocks
+tile.ruby_block.name=block of ruby
+tile.danny_block.name=danny block
+
+
+tile.chester_block.name=Chester
+
+
+//creative tab
+itemGroup.tab_DanMod=DanMod

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dm",
+  "name": "DannyEersteMod",
+  "description": "danvandeees first mod.",
+  "version": "0.1",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["danvandeee"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
