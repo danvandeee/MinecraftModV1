@@ -17,5 +17,10 @@ public class RubyBlock extends BlockBase {
 		
 		//setLightOpacity(1);
 	}
-
+	
+	
+		
+		
+	
+	
 }
