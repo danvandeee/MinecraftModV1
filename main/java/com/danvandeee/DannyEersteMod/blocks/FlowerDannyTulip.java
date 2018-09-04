@@ -13,12 +13,15 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FlowerDannyTulip extends BlockBase implements net.minecraftforge.common.IPlantable {
 	
+	
+	protected static final AxisAlignedBB BUSH_AABB = new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 0.6000000238418579D, 0.699999988079071D);
 	
 	// private static final BlockFlower.EnumFlowerType[][] TYPES_FOR_BLOCK = new BlockFlower.EnumFlowerType[BlockFlower.EnumFlowerColor.values().length][];
      //private final BlockFlower.EnumFlowerColor blockType;
@@ -48,7 +51,11 @@ public class FlowerDannyTulip extends BlockBase implements net.minecraftforge.co
 		@Override
 		public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
 			// TODO Auto-generated method stub
-			return null;
+			IBlockState state = world.getBlockState(pos);
+	        if (state.getBlock() != this) return getDefaultState();
+	        return state;
+			
+			
 		}
 		
 		@Override
@@ -113,25 +120,22 @@ public class FlowerDannyTulip extends BlockBase implements net.minecraftforge.co
 	        return NULL_AABB;
 	    }
 		
+	    
+	    public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
+	    {
+	        IBlockState soil = worldIn.getBlockState(pos.down());
+	        return super.canPlaceBlockAt(worldIn, pos) && soil.getBlock().canSustainPlant(soil, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this);
+	       // super.canPlaceBlockAt(worldIn, pos) &&
+	    
+	    }
+	    
+	    
+	    
+	    
 		
-		/*
 		
-		public String toString()
-        {
-            return this.name;
-        }
-
-        public String getName()
-        {
-            return this.name;
-        }
-
-        public String getUnlocalizedName()
-        {
-            return this.unlocalizedName;
-        }
 	
-	*/
+	
 	
 	
 }
