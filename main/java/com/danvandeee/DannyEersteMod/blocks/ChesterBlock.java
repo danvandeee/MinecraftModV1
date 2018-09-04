@@ -2,6 +2,8 @@ package com.danvandeee.DannyEersteMod.blocks;
 
 import javax.annotation.Nullable;
 
+import com.danvandeee.DannyEersteMod.init.ModBlocks;
+import com.danvandeee.DannyEersteMod.init.ModItems;
 import com.danvandeee.DannyEersteMod.tileentity.ModTileEntityChest;
 
 import net.minecraft.block.Block;
@@ -23,6 +25,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.InventoryLargeChest;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
@@ -65,7 +68,8 @@ public class ChesterBlock extends ModBlockContainer {
 	    		
 	    	}
 	    	
-	    	
+	    	//ModBlocks.BLOCKS.add(this);
+			//ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	       
 	        
 	       //this.setCreativeTab(this.chestType == ChesterBlock.Type.TRAP ? CreativeTabs.REDSTONE : CreativeTabs.DECORATIONS);
