@@ -6,6 +6,7 @@ import java.util.List;
 import com.danvandeee.DannyEersteMod.blocks.BlockBase;
 import com.danvandeee.DannyEersteMod.blocks.ChesterBlock;
 import com.danvandeee.DannyEersteMod.blocks.ChesterBlock.Type;
+import com.danvandeee.DannyEersteMod.blocks.FlowerDannyTulip;
 import com.danvandeee.DannyEersteMod.blocks.RubyBlock;
 
 import net.minecraft.block.Block;
@@ -23,7 +24,7 @@ public class ModBlocks {
 	
 	public static final Block DANNY_BLOCK = new BlockBase("danny_block", Material.WOOD);
 	
-	
+	public static final Block DANNY_TULIP = new FlowerDannyTulip("danny_tulip");
 	
 	public static final Block CHESTER_BLOCK = new ChesterBlock("chester_block", 0);
 
