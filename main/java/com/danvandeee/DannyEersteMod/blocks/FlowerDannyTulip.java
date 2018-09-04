@@ -1,5 +1,7 @@
 package com.danvandeee.DannyEersteMod.blocks;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -8,6 +10,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.EnumPlantType;
@@ -24,11 +27,11 @@ public class FlowerDannyTulip extends BlockBase implements net.minecraftforge.co
    //  private  String unlocalizedName = "bloempie";
 	
 		public FlowerDannyTulip (String name) {
-			super(name, Material.WOOD);
+			super(name, Material.PLANTS);
 			
 			
 			setSoundType(SoundType.METAL);
-			setHardness(1.5F);
+			setHardness(0.0F);
 			setResistance(10.0F);
 			//setHarvestLevel("pickaxe", 1);
 			setLightLevel(1.0F);
@@ -101,6 +104,13 @@ public class FlowerDannyTulip extends BlockBase implements net.minecraftforge.co
 	    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
 	    {
 	        return BlockFaceShape.UNDEFINED;
+	    }
+	    
+	    
+	    @Nullable
+	    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
+	    {
+	        return NULL_AABB;
 	    }
 		
 		
