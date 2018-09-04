@@ -1,0 +1,6 @@
+{
+    "parent": "dm:block/danny_cross",
+    "textures": {
+        "cross": "dm:blocks/danny_tulip"
+    }
+}

@@ -8,6 +8,7 @@ item.danstick.name=Danstick
 //blocks
 tile.ruby_block.name=block of ruby
 tile.danny_block.name=danny block
+tile.danny_tulip.name=danny tulip
 
 
 tile.chester_block.name=Chester
