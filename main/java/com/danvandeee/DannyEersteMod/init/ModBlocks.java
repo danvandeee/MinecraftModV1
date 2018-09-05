@@ -27,7 +27,7 @@ public class ModBlocks {
 	
 	public static final Block DANNY_TULIP = new FlowerDannyTulip("danny_tulip");
 	
-	public static final Block DANNY_LIEFDES_CACTUS = new BlockDannyLiefdesCactus("danny_liefdes_cactus");
+	public static final Block DANNY_LIEFDES_CACTUS = new BlockDannyLiefdesCactus("danny_liefdes_cactus").setUnlocalizedName("danny_liefdes_cactus");
 	
 	public static final Block CHESTER_BLOCK = new ChesterBlock("chester_block", 0);
 

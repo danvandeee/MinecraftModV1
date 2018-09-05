@@ -15,6 +15,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
@@ -32,32 +33,23 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	    protected static final AxisAlignedBB CACTUS_COLLISION_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.9375D, 0.9375D);
 	    protected static final AxisAlignedBB CACTUS_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 1.0D, 0.9375D);
 
-	    
-	    /*
-	    public BlockBase (String name, Material material){
-			super(material);
-			setUnlocalizedName(name);
-			setRegistryName(name);
-			setCreativeTab(Main.tabDanMod);
-			
-			ModBlocks.BLOCKS.add(this);
-			ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
-			
-			
-		}
-	    */
-	    
-	    
+ 
 	    
 	    public BlockDannyLiefdesCactus(String name)
 	    {
-	        super(name, Material.CACTUS);
-	        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
-	        this.setTickRandomly(true);
-	        this.setCreativeTab(CreativeTabs.DECORATIONS);
+	        super(Material.CACTUS);
 	        
-	        ModBlocks.BLOCKS.add(this);
-			ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+	        
+	       this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
+	       this.setTickRandomly(true);
+	       this.setRegistryName(name);
+	       this.setUnlocalizedName(name);
+	       ModBlocks.BLOCKS.add(this);
+	       ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+	        
+	        
+	       // ModBlocks.BLOCKS.add(this);
+			//ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	        
 	        
 	    }
@@ -168,7 +160,15 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	     */
 	    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
 	    {
-	        entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
+	        entityIn.attackEntityFrom(DamageSource.CACTUS, -1.0F);
+	        //entityIn.dropItem(BlcokDannyLiefdesCactus, 1);
+	       System.out.println(entityIn.getName());
+	       
+	       entityIn.moveRelative(0, 5, -4, 1);
+	       
+	       
+	       
+	       
 	    }
 
 	    /**
@@ -223,6 +223,8 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	    {
 	        return BlockFaceShape.UNDEFINED;
 	    }
+	    
+	  
 	
 	
 	
