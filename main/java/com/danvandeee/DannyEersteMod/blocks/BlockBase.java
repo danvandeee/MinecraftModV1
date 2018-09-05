@@ -29,6 +29,11 @@ public class BlockBase extends Block implements IHasModel {
 		
 	}
 	
+	public BlockBase (Material material){
+		super(material);
+	}
+	
+	
 	
 	public BlockBase(Material materialIn, MapColor color)
     {
