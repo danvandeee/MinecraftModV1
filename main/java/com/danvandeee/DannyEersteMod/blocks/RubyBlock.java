@@ -15,6 +15,11 @@ public class RubyBlock extends BlockBase {
 		setHarvestLevel("pickaxe", 1);
 		setLightLevel(1.0F);
 		
+		System.out.println("danny message: " + name);
+	       
+	       
+	       System.out.println("danny message blockstate to string : " + this.blockState.toString());
+		
 		//setLightOpacity(1);
 	}
 	

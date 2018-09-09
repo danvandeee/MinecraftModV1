@@ -1,10 +1,10 @@
 {   "parent": "block/block",
     "ambientocclusion": false,
     "textures": {
-        "particle": "blocks/cactus_side",
+        "particle": "dm:blocks/danny_liefdes_cactus_side",
         "bottom": "blocks/cactus_bottom",
-        "top": "blocks/cactus_top",
-        "side": "blocks/cactus_side"
+        "top": "dm:blocks/danny_liefdes_cactus_top",
+        "side": "dm:blocks/danny_liefdes_cactus_side"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

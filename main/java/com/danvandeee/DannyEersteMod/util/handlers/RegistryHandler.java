@@ -6,6 +6,7 @@ import com.danvandeee.DannyEersteMod.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -27,6 +28,13 @@ public class RegistryHandler {
 		
 		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
 		
+		
+	}
+	
+	@SubscribeEvent
+	public static void onIRecipeRegister(RegistryEvent.Register<IRecipe> event) {
+		
+		event.getRegistry().registerAll();
 		
 	}
 	

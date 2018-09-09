@@ -1,8 +1,10 @@
 package com.danvandeee.DannyEersteMod.blocks;
 
 import java.util.Random;
+import java.util.function.Predicate;
 
 import com.danvandeee.DannyEersteMod.Main;
+import com.danvandeee.DannyEersteMod.blocks.interfacesdanny.CheckerofInstance;
 import com.danvandeee.DannyEersteMod.init.ModBlocks;
 import com.danvandeee.DannyEersteMod.init.ModItems;
 
@@ -15,6 +17,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
@@ -27,8 +30,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftforge.common.IPlantable
+public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftforge.common.IPlantable , CheckerofInstance// , CheckerofInstance
 	{
+		private boolean isCactus = true;
 	    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 15);
 	    protected static final AxisAlignedBB CACTUS_COLLISION_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.9375D, 0.9375D);
 	    protected static final AxisAlignedBB CACTUS_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 1.0D, 0.9375D);
@@ -37,20 +41,20 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	    
 	    public BlockDannyLiefdesCactus(String name)
 	    {
-	        super(Material.CACTUS);
+	    	super(Material.CACTUS);
+	        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
+	        this.setTickRandomly(true);
+	        //this.setCreativeTab(CreativeTabs.DECORATIONS);
+	        this.setHardness(3f);
 	        
+	        setUnlocalizedName(name);
+			setRegistryName(name);
+			setCreativeTab(Main.tabDanMod);
+			
+			setdannyModName(name);
 	        
-	       this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
-	       this.setTickRandomly(true);
-	       this.setRegistryName(name);
-	       this.setUnlocalizedName(name);
-	       ModBlocks.BLOCKS.add(this);
-	       ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
-	        
-	        
-	       // ModBlocks.BLOCKS.add(this);
-			//ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
-	        
+	        ModBlocks.BLOCKS.add(this);
+			ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	        
 	    }
 
@@ -152,7 +156,15 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	        }
 
 	        IBlockState state = worldIn.getBlockState(pos.down());
-	        return state.getBlock().canSustainPlant(state, worldIn, pos.down(), EnumFacing.UP, this) && !worldIn.getBlockState(pos.up()).getMaterial().isLiquid();
+	        
+	        //dannycode
+	        System.out.println("dannymessage: cansustainplant: " + state.getBlock().canSustainPlant(state, worldIn, pos.down(), EnumFacing.UP, this)) ;
+	        System.out.println("dannymessage: state.getblock: " + state.getBlock()) ;
+	        System.out.println("dannymessage: state: " + state + "worldin: "+  worldIn + "posdonw: "+pos.down() +"enumfacing: "+ EnumFacing.UP + "this: "+ this) ;
+	        
+	        
+	       return state.getBlock().canSustainPlant(state, worldIn, pos.down(), EnumFacing.UP, this) && !worldIn.getBlockState(pos.up()).getMaterial().isLiquid();
+	    //return ((getifCactus (state.getBlock()) || state.getBlock().canSustainPlant(state, worldIn, pos.down(), EnumFacing.UP, this)) && !worldIn.getBlockState(pos.up()).getMaterial().isLiquid());
 	    }
 
 	    /**
@@ -160,15 +172,7 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	     */
 	    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
 	    {
-	        entityIn.attackEntityFrom(DamageSource.CACTUS, -1.0F);
-	        //entityIn.dropItem(BlcokDannyLiefdesCactus, 1);
-	       System.out.println(entityIn.getName());
-	       
-	       entityIn.moveRelative(0, 5, -4, 1);
-	       
-	       
-	       
-	       
+	        entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
 	    }
 
 	    /**
@@ -224,9 +228,39 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	        return BlockFaceShape.UNDEFINED;
 	    }
 	    
-	  
-	
-	
-	
-	
-}
+	    
+	    private boolean getifCactus (Block block) {
+			
+	    	if (block instanceof CheckerofInstance) {
+	    		
+	    		
+	    		return true;
+	    	}
+	    	else {
+	    	return false;
+	    	}
+	    	
+	    }
+
+		@Override
+		public String isInstanceType() {
+			// TODO Auto-generated method stub
+			return getdannyModName();
+		}
+		
+		/**
+	     * Get the Item that this Block should drop when harvested.
+	     */
+	    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	    {
+	        return ModItems.CACTUS_BIT;
+	    }
+	    
+	    public int quantityDropped(Random random)
+	    {
+	        return 3 + random.nextInt(5);
+	    }
+	    
+	    
+	    
+	}
