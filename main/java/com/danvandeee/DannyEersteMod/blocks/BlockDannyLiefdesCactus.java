@@ -17,6 +17,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
@@ -44,6 +45,7 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 	        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
 	        this.setTickRandomly(true);
 	        //this.setCreativeTab(CreativeTabs.DECORATIONS);
+	        this.setHardness(3f);
 	        
 	        setUnlocalizedName(name);
 			setRegistryName(name);
@@ -245,7 +247,19 @@ public class BlockDannyLiefdesCactus extends BlockBase implements net.minecraftf
 			// TODO Auto-generated method stub
 			return getdannyModName();
 		}
+		
+		/**
+	     * Get the Item that this Block should drop when harvested.
+	     */
+	    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	    {
+	        return ModItems.CACTUS_BIT;
+	    }
 	    
+	    public int quantityDropped(Random random)
+	    {
+	        return 3 + random.nextInt(5);
+	    }
 	    
 	    
 	    
